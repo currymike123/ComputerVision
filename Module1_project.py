@@ -67,7 +67,7 @@ while cap.isOpened():
     if not ret:
         break
     
-    frame = cv2.resize(frame, None, fx = 0.4, fy = 0.4, interpolation=cv2.INTER_LINEAR)
+    frame = cv2.resize(frame, None, fx = 0.3, fy = 0.3, interpolation=cv2.INTER_LINEAR)
     
     if image_filter == PREVIEW:
         result = frame
@@ -96,4 +96,6 @@ while cap.isOpened():
   
 cap.release()
 cv2.destroyWindow('frame')
+
+
 
