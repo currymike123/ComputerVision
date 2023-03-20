@@ -14273,7 +14273,7 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Linear-Interpolation">Linear Interpolation<a class="anchor-link" href="#Linear-Interpolation">&#182;</a></h3><p>We have already used interpolation with the HSV color space to set the values to the correct range. Remember: <code>np.interp()</code><p></p>
-<p>Simply, <b>Linear Interpolation</b> is a weighting of the known data points by their distance to the unknown intermediate points.</p>
+<p>Simply, <b>Linear Interpolation</b> is a weighting of the known data points by their distance to the unknown data points.</p>
 <p><img src="Graphics/lerp.png"></p>
 
 </div>
@@ -14338,47 +14338,25 @@ y = y<sub>1</sub> + (((x - x<sub>1</sub>) * (y<sub>2</sub> - y<sub>1</sub>)) / (
 <p>So new data point (x, y) is (5,8)</p>
 <p>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Linear Interpolation</span>
-<span class="k">def</span> <span class="nf">Linear_Interpolation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">):</span>
-    <span class="c1"># x0, x1, y0, y1 are the known points</span>
-    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">y0</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># # Linear Interpolation</span>
+<span class="c1"># def Linear_Interpolation(x, x0, x1, y0, y1):</span>
+<span class="c1">#     # x0, x1, y0, y1 are the known points</span>
+<span class="c1">#     return round(y0 + (x - x0) * (y1 - y0) / (x1 - x0))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">Linear_Interpolation</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="c1"># print(Linear_Interpolation(5,1,6,4,9))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mi">5</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">])))</span>
+<span class="c1"># print(round(np.interp(5,[1,6],[4,9])))</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>8
-8
-</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -14393,7 +14371,7 @@ y = y<sub>1</sub> + (((x - x<sub>1</sub>) * (y<sub>2</sub> - y<sub>1</sub>)) / (
 <p>A very simple algorithm with a fast execution time widely used in real-time rendering.  Nearest Neighbor produces sharp edges and is ideal for images with hard lines.<p>
 <img src="Graphics/nn_1.png"></p>
 <p><p><p></p>
-<h4 id="Nearest-Neighbor-Pseudoscope">Nearest Neighbor Pseudoscope<a class="anchor-link" href="#Nearest-Neighbor-Pseudoscope">&#182;</a></h4><p><img src="Graphics/grid-nn.png"><p></p>
+<p><img src="Graphics/grid-nn.png"><p></p>
 
 <pre><code>If (K-B &lt; B+1-K)
 
@@ -14498,7 +14476,7 @@ ENDIF</code></pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.image.AxesImage at 0x7ff5cde78e80&gt;</pre>
+<pre>&lt;matplotlib.image.AxesImage at 0x7fc479295220&gt;</pre>
 </div>
 
 </div>
@@ -14570,7 +14548,7 @@ ENDIF</code></pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.image.AxesImage at 0x7ff5b39267f0&gt;</pre>
+<pre>&lt;matplotlib.image.AxesImage at 0x7fc479306580&gt;</pre>
 </div>
 
 </div>
@@ -14640,7 +14618,7 @@ ENDIF</code></pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.image.AxesImage at 0x7ff5b5a96640&gt;</pre>
+<pre>&lt;matplotlib.image.AxesImage at 0x7fc47643feb0&gt;</pre>
 </div>
 
 </div>
@@ -14795,7 +14773,7 @@ fx -= sx</code></pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.image.AxesImage at 0x7ff5b40d7c10&gt;</pre>
+<pre>&lt;matplotlib.image.AxesImage at 0x7fc477616d90&gt;</pre>
 </div>
 
 </div>
@@ -14865,7 +14843,7 @@ fx -= sx</code></pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.image.AxesImage at 0x7ff5b420ce20&gt;</pre>
+<pre>&lt;matplotlib.image.AxesImage at 0x7fc45f1cb370&gt;</pre>
 </div>
 
 </div>
@@ -14935,7 +14913,7 @@ fx -= sx</code></pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.image.AxesImage at 0x7ff5b64d3d90&gt;</pre>
+<pre>&lt;matplotlib.image.AxesImage at 0x7fc477b887c0&gt;</pre>
 </div>
 
 </div>
@@ -15045,7 +15023,7 @@ OpenCV has different methods to add borders which you can check here. Here, I us
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.image.AxesImage at 0x7ff5b63ba130&gt;</pre>
+<pre>&lt;matplotlib.image.AxesImage at 0x7fc45f21dbb0&gt;</pre>
 </div>
 
 </div>
