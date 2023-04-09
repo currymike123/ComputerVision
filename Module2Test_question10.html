@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Module4_new</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Module2Test_question10</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14259,391 +14259,62 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Module-4:-Feature-Detection----Binary-Image-Analysis">Module 4: Feature Detection -  Binary Image Analysis<a class="anchor-link" href="#Module-4:-Feature-Detection----Binary-Image-Analysis">&#182;</a></h1><hr>
+<h3>(10)   Fill in the missing comments  for each OpenCV function in the Sobel pipeline, explaining the purpose of each step.  The  (10 pts - 1 pt each)<p></h3>
+<p>Comment = #  <p></p>
+
+<pre><code>
+# 
+#
+img = cv2.imread('Graphics/face_conv.png')
+
+
+# 
+#
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+
+#
+#
+kernelOne = np.array([[1, 2, 1], [2, 4, 2], [1, 2, 1]],dtype=np.float32) / 16
+
+
+#
+#
+filterOneImage = cv2.filter2D(KernelOne, cv2.CV_64F, gray)
+
+
+# 
+#
+kernelX = np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]], dtype=np.float64)
+
+
+#
+#
+KernelY = np.array([[-1, -2, -1], [0, 0, 0], [1, 2, 1]], dtype=np.float64)
+
+
+# 
+#
+imageX = cv2.filter2D(filterOneImage, cv2.CV_64F, kernelX)
+
+#
+#
+imageY = cv2.filter2D(filterOneImage, cv2.CV_64F, kernelY)
+
+
+# Compute the magnitude of the gradients of imageX and imageY
+mag = cv2.magnitude(imageX, imageY)
+
+
+# 
+#
+val, thresh = cv2.threshold(mag, 100, 200, cv2.THRESH_BINARY)
+
+#
+#
+plt.imshow(thresh, cmap='gray')</code></pre>
 
 </div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>In computer vision, a feature is a part of an image that has some distinguishable characteristics that can be used to identify it or distinguish it from other features. These characteristics can include things like edges, corners, blobs, or other patterns in the image.</p>
-<p>Feature detection algorithms are designed to identify and locate these features in an image. The most common types of features used in computer vision are corners and edges, as they are typically easy to detect and provide a lot of useful information about the image.</p>
-<p>The process of feature detection involves analyzing the image to identify areas where features are likely to be found. This is usually done by searching for areas of high contrast or regions where there are abrupt changes in color or texture.</p>
-<p>Once potential feature points are identified, feature detection algorithms will typically compute a descriptor for each feature. The descriptor is a mathematical representation of the feature that captures its key characteristics. This descriptor is then used to match features between images, or to identify similar features in different images.</p>
-<h3 id="Jigsaw-Example">Jigsaw Example<a class="anchor-link" href="#Jigsaw-Example">&#182;</a></h3><p>Most of you will have played the jigsaw puzzle games. You get a lot of small pieces of an image, where you need to assemble them correctly to form a big real image. The question is, how you do it? What about the projecting the same theory to a computer program so that computer can play jigsaw puzzles? If the computer can play jigsaw puzzles, why can't we give a lot of real-life images of a good natural scenery to computer and tell it to stitch all those images to a big single image? If the computer can stitch several natural images to one, what about giving a lot of pictures of a building or any structure and tell computer to create a 3D model out of it?</p>
-<p>Well, the questions and imaginations continue. But it all depends on the most basic question: How do you play jigsaw puzzles? How do you arrange lots of scrambled image pieces into a big single image? How can you stitch a lot of natural images to a single image?</p>
-<p>The answer is, we are looking for specific patterns or specific features which are unique, can be easily tracked and can be easily compared. If we go for a definition of such a feature, we may find it difficult to express it in words, but we know what they are. If someone asks you to point out one good feature which can be compared across several images, you can point out one. That is why even small children can simply play these games. We search for these features in an image, find them, look for the same features in other images and align them. That's it. (In jigsaw puzzle, we look more into continuity of different images). All these abilities are present in us inherently.</p>
-<p>So our one basic question expands to more in number, but becomes more specific. What are these features?</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Binary-Image-Analysis">Binary Image Analysis<a class="anchor-link" href="#Binary-Image-Analysis">&#182;</a></h3><p>Finding corners is important in feature detection because corners are distinctive and stable features in an image that can be used to identify and track objects. Corners are points in an image where the intensity of the image changes rapidly in all directions. These corners can be used as landmarks to detect and track objects even when the object is undergoing changes in scale, rotation, or perspective.</p>
-<p>Corners are also useful because they are invariant to translation, which means that if an object is moved, the corners will remain in the same position. This property makes corners useful for matching features across multiple images.</p>
-<p>Furthermore, corners provide information about the local structure of an image, which can be used to extract useful features that can be used for further analysis.</p>
-<p><img src="Graphics/search_1.png"></p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><img src="Graphics/search_2.png"></p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Import Libraries</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1">#Saving an image. 0 for grayscale. 1 for color. -1 for color with a alpha channel. </span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;Graphics/image2.png&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1">#How many elements are in that data. </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-
-<span class="c1">#What is the shape of the array.</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1">#What type are the elements.</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-
-<span class="c1">#What is the first element</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="c1">#Print my data</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>225
-(15, 15)
-uint8
-255
-[[255 255 255 255 255 255 255 255 255 255 255 255 255 255 255]
- [255 255 255 255 255 255 255 255 255 255 255 255 255 255 255]
- [255 255 255 255 255 255 255 255 255 255 255 255 255 255 255]
- [255 255 255   0 255 255 255 255 255 255 255   0 255 255 255]
- [255 255   0   0   0 255 255 255 255 255   0   0   0 255 255]
- [255 255 255   0 255 255 255 255 255 255 255   0 255 255 255]
- [255 255 255 255 255 255 255 255 255 255 255 255 255 255 255]
- [255 255 255   0 255 255 255 255 255 255 255   0 255 255 255]
- [255 255 255   0 255 255 255 255 255 255 255   0 255 255 255]
- [255 255 255   0 255 255 255 255 255 255 255   0 255 255 255]
- [255 255 255   0   0   0   0   0   0   0   0   0 255 255 255]
- [255 255 255 255   0   0   0   0   0   0   0 255 255 255 255]
- [255 255 255 255 255 255 255 255 255 255 255 255 255 255 255]
- [255 255 255 255 255 255 255 255 255 255 255 255 255 255 255]
- [255 255 255 255 255 255 255 255 255 255 255 255 255 255 255]]
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.image.AxesImage at 0x7f938841c6a0&gt;</pre>
-</div>
-
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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"
->
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert to 0 and 1 and keep as an integer. </span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">img</span><span class="o">/</span><span class="mi">255</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
- [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
- [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
- [1 1 1 0 1 1 1 1 1 1 1 0 1 1 1]
- [1 1 0 0 0 1 1 1 1 1 0 0 0 1 1]
- [1 1 1 0 1 1 1 1 1 1 1 0 1 1 1]
- [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
- [1 1 1 0 1 1 1 1 1 1 1 0 1 1 1]
- [1 1 1 0 1 1 1 1 1 1 1 0 1 1 1]
- [1 1 1 0 1 1 1 1 1 1 1 0 1 1 1]
- [1 1 1 0 0 0 0 0 0 0 0 0 1 1 1]
- [1 1 1 1 0 0 0 0 0 0 0 1 1 1 1]
- [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
- [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
- [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]]
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><ul>
-<li>0 represents absence of material indicated by light passing.</li>
-<li>1 represents material which light has not passed. </li>
-</ul>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s make arrays out of all the external corners.  Sepearte Varialbes to illustrate.   Excercise:  Make them 3D arrays to start.</span>
-<span class="n">exCorner1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]])</span>
-<span class="n">exCorner2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]])</span>
-<span class="n">exCorner3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]]])</span>
-<span class="n">exCorner4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]]])</span>
-
-<span class="c1"># Combine all the external corners into one array.</span>
-<span class="n">exCorner</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">exCorner1</span><span class="p">,</span><span class="n">exCorner2</span><span class="p">,</span><span class="n">exCorner3</span><span class="p">,</span><span class="n">exCorner4</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The first external corner is:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">exCorner</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="c1"># Let&#39;s make arrays out of all the internal corners.</span>
-<span class="n">inCorner1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]])</span>
-<span class="n">inCorner2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]])</span>
-<span class="n">inCorner3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]])</span>
-<span class="n">inCorner4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]])</span>
-
-<span class="c1"># Combine all the internal corners into one array.</span>
-<span class="n">inCorner</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">inCorner1</span><span class="p">,</span><span class="n">inCorner2</span><span class="p">,</span> <span class="n">inCorner3</span><span class="p">,</span> <span class="n">inCorner4</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The first internal corner is:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">inCorner</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>The first external corner is:
-[[1 1]
- [1 0]]
-The first internal corner is:
-[[0 0]
- [0 1]]
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Write the function to search the image for the number of holes. </span>
-<span class="k">def</span> <span class="nf">count_holes</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
-    
-    <span class="c1">#Save the height and width.</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-    <span class="c1"># variables to return the external and internal corner counts</span>
-    <span class="n">e</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="c1">#For each row in our grid. y = row</span>
-    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">h</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="c1">#Search each pixel in the row. x = pixel</span>
-        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">w</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-
-            <span class="n">curFrame</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">img</span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">],</span><span class="n">img</span><span class="p">[</span><span class="n">y</span><span class="p">,</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]],[</span><span class="n">img</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="p">],</span><span class="n">img</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">]]])</span>
-
-            <span class="c1"># check to see if the arrays are equal.</span>
-            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">exCorner</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-                
-                <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">exCorner</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">curFrame</span><span class="p">)):</span>
-                    <span class="n">e</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">inCorner</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">curFrame</span><span class="p">)):</span>
-                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">return</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">((</span><span class="n">e</span><span class="o">-</span><span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">))</span>
-
-
-<span class="n">number_of_holes</span> <span class="o">=</span> <span class="n">count_holes</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of holes:&quot;</span><span class="p">,</span><span class="n">number_of_holes</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Number of holes: 3
-</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.image.AxesImage at 0x7f93843da730&gt;</pre>
-</div>
-
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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"
->
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 </body>
 
