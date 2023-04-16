@@ -1,0 +1,11 @@
+Using the provided Python file (final_project_template.py), create an image filtering and tracking app.&nbsp; Your app needs to have five different key codes that made to filters/tracking.&nbsp; We will discuss using the python file and the project requirements.&nbsp;
+
+&nbsp;Your app should have the following:
+
+Color Space Conversion or Threshold filter using for loops.
+HSV Skin detector. (In-class project)
+Convolution-based filter. (Sharpening, Blurring, etc.)
+Edge-detecting pipeline with noise reduction (Prewitt/Sobel).&nbsp;
+One object detection/tracking algorithm.&nbsp;
+
+More details to come...
