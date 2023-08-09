@@ -1,0 +1,9 @@
+1) Introduction, Syllabus, Get the background of the students
+2) Pixel/Storing Files. How to use OpenCv. Code intro.
+3) Numpy why use it to manipulate image data.  Go over the functions.
+4) Image Processing. Brightness/Contrast/Color/Thresholding/Histograms
+6) Blur, Edge Detection, Contours, Morphological Operations
+5) Color Spaces. HSV, RGB, CMYK.  First HSV skin tracking
+7) Detecting Motion, Detecting Presensce.
+8) Face/Eye Haar Cascades.
+9) Machine Learning Crash Course
