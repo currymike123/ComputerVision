@@ -14266,8 +14266,14 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="../Graphics/What_Is_An_Image.png"></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Color">Color<a class="anchor-link" href="#Color">&#182;</a></h3><p>Our perception of color comes from our ability to detect a small range of the electromagnetic spectrum which we call the visible spectrum or more commonly visible light.</p>
-<p><img src="Graphics/Linear_visible_spectrum.png"></p>
+<p><img src="../Graphics/Linear_visible_spectrum.png"></p>
 <p>There are two ways to interpert color: <strong>Additive</strong> (RGB) or <strong>Subtractive</strong> (CMYK).</p>
 <ul>
 <li><p><strong>Additive</strong> color is produced by adding together wavelengths of light.  Additive color starts at black (absence of light) and moves to white as more light is added.</p>
@@ -14292,7 +14298,7 @@ a.anchor-link {
 </ul>
 <h4 id="RGB:-Red,-Green,-Blue"><strong>RGB:</strong> <span style="color:red">Red</span>,<span style="color:green"> Green</span>, <span style="color:blue">Blue</span><a class="anchor-link" href="#RGB:-Red,-Green,-Blue">&#182;</a></h4><p>Three 8-bit integers are most commonly used to store RGB values. (10, 12, 14, 16, ... bit color can be used for higher fidelity.)</p>
 <p>8-bit: 256 values from 0-255. (zero-based index)</p>
-<p>256 x 256 x 256 = 16,77,216 colors can be represented in 8-bit color.</p>
+<p>256 x 256 x 256 = 16,777,216 colors can be represented in 8-bit color.</p>
 <p>(red value, green value, blue value)</p>
 <ul>
 <li>(255,0,0) = Red</li>
@@ -14307,7 +14313,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Pixel-Grid">Pixel Grid<a class="anchor-link" href="#Pixel-Grid">&#182;</a></h3><p>Every image is made up of a grid of pixels.  The grid holds all the pixel values in their correct location.</p>
+<h3 id="Pixel-Grid-(Matrix)">Pixel Grid (Matrix)<a class="anchor-link" href="#Pixel-Grid-(Matrix)">&#182;</a></h3><p>Every image is made up of a grid (matrix) of pixels.  The grid holds all the pixel values in their correct location.</p>
 <table>
 <thead><tr>
 <th style="text-align:center">The</th>
@@ -14333,10 +14339,16 @@ a.anchor-link {
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<div align="center">
-<img src="Graphics/gradient.png">
-</div><p>How can we store these values in the computer's memory?<br></p>
+<p><p>
+<img src="../Graphics/gradient.png"></p>
+<p>You can think of a (grayscale) image as a function:
+$$ f: \mathbb{R}^2 \rightarrow \mathbb{R} $$
+where 
+$$ f(x,y) $$
+gives the intensity at position 
+$$ (x,y) $$</p>
+<p>A digital image is a discrete (sampled, quantized) version of this function.</p>
+<h3 id="Storing-Image-Information">Storing Image Information<a class="anchor-link" href="#Storing-Image-Information">&#182;</a></h3><p>How can we store these values in the computer's memory?<br></p>
 <p>First, let's store them each individualy.<br><br>
 <strong>Seperate vaiables:</strong></p>
 <p>pixel0 = 29<br>
@@ -14431,10 +14443,17 @@ The previous 1D array can be rendered as a 3x3 image:
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print the variable at position 8.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Import Libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1">#1D array</span>
+<span class="c1"># Print the variable at position 8.</span>
+
+<span class="c1">#1D array python</span>
 <span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="mi">29</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">126</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">179</span><span class="p">,</span><span class="mi">126</span><span class="p">,</span><span class="mi">179</span><span class="p">,</span><span class="mi">224</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+
+<span class="c1">#1D array numpy</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">29</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">126</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">179</span><span class="p">,</span><span class="mi">126</span><span class="p">,</span><span class="mi">179</span><span class="p">,</span><span class="mi">224</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
 </pre></div>
 
@@ -14456,6 +14475,7 @@ The previous 1D array can be rendered as a 3x3 image:
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>224
+224
 </pre>
 </div>
 </div>
@@ -14514,8 +14534,12 @@ The previous 1D array can be rendered as a 3x3 image:
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print the variable at row 1 position 2</span>
 
-<span class="c1">#2D array</span>
+<span class="c1">#2D array python</span>
 <span class="n">image</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">29</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">126</span><span class="p">],[</span><span class="mi">75</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">179</span><span class="p">],[</span><span class="mi">126</span><span class="p">,</span><span class="mi">179</span><span class="p">,</span><span class="mi">224</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1">#2D array numpy</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">29</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">126</span><span class="p">],[</span><span class="mi">75</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">179</span><span class="p">],[</span><span class="mi">126</span><span class="p">,</span><span class="mi">179</span><span class="p">,</span><span class="mi">224</span><span class="p">]])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 
@@ -14537,6 +14561,7 @@ The previous 1D array can be rendered as a 3x3 image:
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>179
+179
 </pre>
 </div>
 </div>
@@ -14558,7 +14583,7 @@ The previous 1D array can be rendered as a 3x3 image:
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Install Open CV and give tutorial on getting Jupyter notebook up and running.</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Install Open CV and tutorial on getting Jupyter notebook up and running.</span>
 <span class="c1"># %pip install opencv-contrib-python</span>
 <span class="c1"># %pip install matplotlib</span>
 
@@ -14568,18 +14593,18 @@ The previous 1D array can be rendered as a 3x3 image:
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1">#Saving an image. 0 for grayscale. 1 for color. -1 for color with a alpha channel. </span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;Graphics/image1.png&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../Graphics/image1.png&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="c1">#How many elements are in that data. </span>
+<span class="c1"># #How many elements are in that data. </span>
 <span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
 
-<span class="c1">#What is the shape of the array.</span>
+<span class="c1"># #What is the shape of the array.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<span class="c1">#What type are the elements.</span>
+<span class="c1"># #What type are the elements.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 
-<span class="c1">#What is the first element</span>
+<span class="c1"># #What is the first element</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="c1">#Print my data</span>
@@ -14630,6 +14655,44 @@ uint8
 
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my_array is a numpy array&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my_array is not a numpy array&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>my_array is a numpy array
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -14637,6 +14700,7 @@ uint8
 <li>We have an image with 225 elements contained in a 2D array with a length of 15 in both dimensions.  </li>
 <li>The data type of each element is uint8 which stands for unsigned 8-bit integer.  Unsigned denotes that it is non-negative number (zero or positive). </li>
 <li>The first element of the first row has a value of 255.</li>
+<li>The image is saved in a numpy array.</li>
 </ul>
 <p>We also printed the data to the console to see what values it contained.  The data is made up of rows of pixels set to either 255 or 0 which we just learned represent black and white.  Your probably can guess what our image is just from this output.</p>
 
@@ -14699,9 +14763,9 @@ uint8
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Create your own binary image</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Create your own grayscale image</span>
 
-<span class="n">binaryimage</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">29</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">126</span><span class="p">],[</span><span class="mi">75</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">179</span><span class="p">],[</span><span class="mi">126</span><span class="p">,</span><span class="mi">179</span><span class="p">,</span><span class="mi">224</span><span class="p">]]</span>
+<span class="n">grayscaleImage</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">29</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">126</span><span class="p">],[</span><span class="mi">75</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">179</span><span class="p">],[</span><span class="mi">126</span><span class="p">,</span><span class="mi">179</span><span class="p">,</span><span class="mi">224</span><span class="p">]]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">binaryimage</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -14724,7 +14788,7 @@ uint8
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.image.AxesImage at 0x7fd680643a90&gt;</pre>
+<pre>&lt;matplotlib.image.AxesImage at 0x7fd67d02ef40&gt;</pre>
 </div>
 
 </div>
