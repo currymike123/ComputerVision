@@ -14265,26 +14265,53 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Three-Axis-Color">Three Axis Color<a class="anchor-link" href="#Three-Axis-Color">&#182;</a></h3><p><strong>RGB</strong> can be visualized in a cube.  The full color range is represented in the internal 3D space. <br><br>
-<img src="Graphics/threeaxis.png"><br>
-<img src="Graphics/rgb_cube.png"><br></p>
+<h3 id="Three-Axis-Color">Three Axis Color<a class="anchor-link" href="#Three-Axis-Color">&#182;</a></h3><p>In the RGB color space, colors are often visualized as points within a cube. This cube is a three-dimensional Cartesian coordinate system where each axis represents one of the primary colors: Red, Green, and Blue. The cube provides a way to visualize how the primary colors mix to produce other colors.
+<br><br></p>
+<p><img src="../Graphics/threeaxis.png"><br>
+<img src="../Graphics/rgb_cube.png"><br></p>
+<h3 id="Structure-of-the-RGB-Cube">Structure of the RGB Cube<a class="anchor-link" href="#Structure-of-the-RGB-Cube">&#182;</a></h3><p>(note: you can substitute 255 for 1 in the image above)</p>
+<ul>
+<li><p><strong>Origin (0,0,0)</strong>: At the origin, all RGB values are zero, which corresponds to the color black.</p>
+</li>
+<li><p><strong>Cube Corners</strong>: The opposite corner from the origin is white, where all RGB values are at their maximum (255, 255, 255 in an 8-bit color scheme).</p>
+</li>
+<li><p><strong>Primary Colors</strong>: The three primary colors are situated along the three axes:</p>
+<ul>
+<li>The Red axis extends from black (0,0,0) to red (255,0,0).</li>
+<li>The Green axis extends from black (0,0,0) to green (0,255,0).</li>
+<li>The Blue axis extends from black (0,0,0) to blue (0,0,255).</li>
+</ul>
+</li>
+</ul>
+<h4 id="Characteristics-of-the-RGB-Cube:">Characteristics of the RGB Cube:<a class="anchor-link" href="#Characteristics-of-the-RGB-Cube:">&#182;</a></h4><ol>
+<li><p><strong>Grayscale Line</strong>: If you were to draw a line from the black corner (0,0,0) to the white corner (255,255,255), all points along that line would be shades of gray. This is because, at any point along this line, the values of R, G, and B are equal.</p>
+</li>
+<li><p><strong>Secondary Colors</strong>: The corners of the cube where only two primary colors mix (ignoring black and white) are the secondary colors. For example, magenta is a mixture of red and blue (255,0,255).</p>
+</li>
+<li><p><strong>Tertiary Colors and Beyond</strong>: As you move through the cube, the various other colors are combinations of the primary colors in different ratios.</p>
+</li>
+<li><p><strong>Faces of the Cube</strong>: Each face of the cube represents all possible values of two primary colors while keeping the third one constant. For example, one face of the cube would show all combinations of red and green while keeping blue at 0.</p>
+</li>
+<li><p><strong>Volume</strong>: Every point inside the cube represents a unique color. The x, y, and z coordinates of that point correspond to the R, G, and B values, respectively.</p>
+</li>
+</ol>
 <p>Other color spaces exist such as HSV (HSB) &amp; YCrCb.<br></p>
-<p><strong>HSV, HSB, HSI</strong><br><br>
-HSV stands for Hue, Saturation, and Value.  You may see it called HSB or HSI (brightness and intensity).  You can visualize the HSV color space in a cylinder or more precisely in a hexacone.  <br></p>
+<h4><strong>HSV, HSB, HSI</strong><br></h4>
+<p>HSV stands for Hue, Saturation, and Value.  You may see it called HSB or HSI (brightness and intensity).  You can visualize the HSV color space in a cylinder or more precisely in a hexacone.  <br></p>
 <p>HSV encodes color information by seperating out the brightness (value or intensity) value from the two values encoding chromaticity, Hue and Saturation. <p>
 Hue: Represents the color.<br>
 Saturation: Represents the purity of the hue or color.  The amount of grey mixed in. 
 Value: The amount of of black or white mixed with a given hue</p>
 <p><p>
-The hue is defined by the angle between 0 and 360&deg; or 2&pi;. &pi;(radians) being equal to 180&deg; and 2&pi; being equal to 360&deg;.  &pi; $\approx$ 3.14 | 2&pi; $\approx$ 6.28</p>
+The hue is defined by the angle between 0 and 360&deg; or 2&pi;. &pi;(radians) being equal to 180&deg; and 2&pi; being equal to 360&deg;.  &pi;  ≈  3.14 | 2&pi;  ≈  6.28</p>
 <ul>
 <li>Pure red is an angle of 0&deg;</li>
 <li>Pure green is at 120&deg; or 2&pi;/3.</li>
 <li>Pure blue is at 240&deg; or 4&pi;/3.</li>
 </ul>
 <p><br><br>
-<img src="Graphics/hsv_hexacone.png"><br>
-<img src="Graphics/rgbvshsb.jpeg"><br></p>
+<img src="../Graphics/hsv_hexacone.png"><br>
+<img src="../Graphics/rgbvshsb.jpeg"><br></p>
 
 </div>
 </div>
@@ -14296,7 +14323,7 @@ The hue is defined by the angle between 0 and 360&deg; or 2&pi;. &pi;(radians) b
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>RGB -&gt; HSV</strong><br>
-<img src="Graphics/rgb_to_hsv.png"><br></p>
+<img src="../Graphics/rgb_to_hsv.png"><br></p>
 
 </div>
 </div>
@@ -14492,7 +14519,7 @@ Converted to hsv: [7.86206897 0.725      0.78431373]
 <li>Cb stands for the change in the blue channel. <br></li>
 </ul>
 <p><a href="https://en.wikipedia.org/wiki/YCbCr">YCrCb wiki</a></p>
-
+<hr>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14515,14 +14542,14 @@ Converted to hsv: [7.86206897 0.725      0.78431373]
 <li><strong>Postscript</strong> Page Description Language. (1982)  Invented by Adobe.  PDF, EPS.  Dominates the graphics and printing industry. <a href="https://en.wikipedia.org/wiki/PostScript">Postscript Wiki</a><br><br></li>
 <li><strong>SVG</strong>  Scalable Vector Graphics. (1999) World Wide Web Consortium (W3C)  Vector graphics stored in XML files which allows easy searching.  Allows for multiple files and animation. <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG Wiki</a> </li>
 </ul>
-
+<hr>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Exercise">Exercise<a class="anchor-link" href="#Exercise">&#182;</a></h3><p><strong>(1)</strong> Convert the RGB to HSV code so it produces values in OpenCv's specified ranges and array structure.  Your function should accept a 3D array and return HSV values in OpenCv's ranges. H -&gt; [0,180], S -&gt; [0,255], V -&gt; [0,255]<p> To test your function use the following rgb value: <code>rgb = np.uint8([[[200,74,55]]])</code> <br>  Your function should return: [[[4, 185, 200]]]<p>
-<strong>(2)</strong> Extra credit:  Write the Python code for the conversion of HSV color space to RGB.  The algorithm is below.  The code is available online but please write it on your own.  Include comments to describe each step in your code. <p>
-<img src="Graphics/hsv_rgb.png"><br></p>
+<h3 id="Project-1---part-1-"><b>Project 1 - part 1 </b><a class="anchor-link" href="#Project-1---part-1-">&#182;</a></h3><p><strong>(1)</strong> Convert the RGB to HSV code so it produces values in OpenCv's specified ranges and array structure.  Your function should accept a 3D array and return HSV values in OpenCv's ranges. H -&gt; [0,180], S -&gt; [0,255], V -&gt; [0,255]<p> To test your function use the following rgb value: <code>rgb = np.uint8([[[200,74,55]]])</code> <br>  Your function should return: [[[4, 185, 200]]]<p>
+<strong>(2)</strong>  Write the Python code for the conversion of HSV color space to RGB.  The algorithm is below.  The code is available online but please write it on your own.  Include comments to describe each step in your code. <p>
+<img src="../Graphics/hsv_rgb.png" height=500><br></p>
 
 </div>
 </div>
