@@ -15022,10 +15022,58 @@ uint8
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">&#182;</a></h3><p><strong>(1)</strong> 50,75,100,125,150,175,200,225,250.  Show this sequence of values in a 1D and 2D array. <br><br> 
+<h3 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">&#182;</a></h3><p><strong>(1)</strong> 50,75,100,125,150,175,200,225.  Show this sequence of values in a 1D and 2D array. <br><br> 
 <strong>(2)</strong> 50,75,100,125,150,175,200,225,250.  In a 1D array, what is the array position of the value 150?<br><br> 
-<strong>(3)</strong> 50,75,100,125,150,175,200,225,250.  In a 2D array, what is the array position of the value 150?<br><br> 
-<strong>(4)</strong> Find a photo from Google Images, save it as a variable, and draw it using matplotlib.<br><br></p>
+<strong>(3)</strong> 50,75,100,125,150,175,200,225,250.  In a 3x3 2D array, what is the array position of the value 150?<br><br> 
+<strong>(4)</strong> Find a photo from Google Images, save it as a variable, and draw it using matplotlib.<br><br> 
+<strong>(5)</strong> How would you extract the following subarrays using slicing? (Code Below)<br><br></p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">(A)</span>
+<span class="sd">[100,175,250]</span>
+
+<span class="sd">(B)</span>
+<span class="sd">[125, 150, 175]</span>
+
+<span class="sd">(C)</span>
+<span class="sd">[[50,75]</span>
+<span class="sd">[125,150]</span>
+<span class="sd">[200,225]]</span>
+
+<span class="sd">(D)</span>
+<span class="sd">[[125 150]</span>
+<span class="sd">[200 225]]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Original 3x3 array</span>
+<span class="n">arr_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+                   <span class="p">[</span><span class="mi">125</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">175</span><span class="p">],</span>
+                   <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">250</span><span class="p">]])</span>
+
+<span class="c1"># Slicing to get the subarray</span>
+<span class="n">subarray</span> <span class="o">=</span> <span class="n">arr_2d</span><span class="p">[</span><span class="s2">&quot;YOUR CODE HERE&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">subarray</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><strong>(6)</strong>  Create a 2-D and 3-D array with Integers 0-47.</p>
 
 </div>
 </div>
