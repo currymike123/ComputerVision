@@ -14259,14 +14259,15 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Module2c:-The-Kernel">Module2c: The Kernel<a class="anchor-link" href="#Module2c:-The-Kernel">&#182;</a></h1><p>How are your neighbors effecting you?</p>
+<h1 id="Module2c:-The-Kernel">Module2c: The Kernel<a class="anchor-link" href="#Module2c:-The-Kernel">&#182;</a></h1><p>"Filters are devices for picking and choosing - for retaining things that you want while getting rid of things that you don't: coffee filters separate the coffee from the grounds, gravel filters let the small stones through and retain the large ones, audio filters take out the crackle and hiss, Ray-Bans filter out sunlight, and rose-tinted spectacles let you see the world in whatever way you like." - William J. Mitchell (The Reconfigured Eye)</p>
 <hr>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The Threshold filter from Module 2 modified the image by changing pixel value depending on if it was above or below a fixed value.  Each discrete pixel was modified in insolation.  Another way to modify an image is to change the pixel value in relation its neighboring pixels.  To accomplish this we use a matrix of numbers called a <strong>Convolution Kernel</strong>.</p>
+<p>The Threshold filter from Module 2 modifies the image by changing pixel values depending on if it is above or below a dividing point.  Each discrete pixel was modified in insolation.</p>
+<p>Another way to modify an image is to change the pixel value in relation its neighboring pixels.  To accomplish this we use a matrix of numbers called a <strong>Convolution Kernel</strong>.</p>
 <p><strong>Sharpen</strong> and <strong>Blur</strong> are two common kernels.</p>
 <p><b>Sharpen</b> emphasizes differences in adjacent pixels.<br>
 <b>Blur</b> de-emphasizes differences in adjacent pixels.</p>
@@ -14314,7 +14315,7 @@ $$<p>(255 <em> 1/9) + (226 </em> 1/9) + (153 <em> 1/9) + <br>
 <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(([</span><span class="mi">255</span><span class="p">,</span><span class="mi">226</span><span class="p">,</span><span class="mi">153</span><span class="p">],</span>
                   <span class="p">[</span><span class="mi">226</span><span class="p">,</span><span class="mi">153</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
                   <span class="p">[</span><span class="mi">153</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span>
-                  <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+                  <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 
 <span class="c1"># Convolution Step.</span>
 <span class="n">convolve_image</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)))</span>
@@ -14351,9 +14352,14 @@ $$<p>(255 <em> 1/9) + (226 </em> 1/9) + (153 <em> 1/9) + <br>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><img src='Graphics/full_padding_no_strides.webp'><p>
+<p><img src='../Graphics/full_padding_no_strides.webp'><p>
 <b>Stride</b> denotes how many pixels we are moving in each step of convolution.</p>
-<p><b>Padding</b> is the process of adding pixels to the frame of the image to allow for a minimized reduction of size in the output image. Roughly, it is a way of increasing the size of an image, to counteract the fact that stride reduces the size.</p>
+<p><b>Padding</b> is the process of adding pixels to the frame of the image to allow for a minimized reduction of size in the output image. Roughly, it is a way of increasing the size of an image, to counteract the fact that stride reduces the size.<p></p>
+<ul>
+<li>Zero/Same Padding: Adds zeros around the border of the image.</li>
+<li>Replicate Padding: The border pixels of the image are replicated.
+For instance, if the leftmost pixel values are [10, 20, 30], the padding will be [10, 10, 10, 20, 30, 30, 30].</li>
+</ul>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14425,7 +14431,7 @@ $$<p>(255 <em> 1/9) + (226 </em> 1/9) + (153 <em> 1/9) + <br>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Python implementation of convolution</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Implementation of convolution</span>
 
 <span class="c1"># Code for 3x3 kernel with convolution. No Padding. Stride = 1.</span>
 <span class="c1"># To perform convolution on the whole image padding needs to be added.</span>
@@ -14597,6 +14603,89 @@ $$<p>(255 <em> 1/9) + (226 </em> 1/9) + (153 <em> 1/9) + <br>
 >
 </div>
 
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Gaussian-Blur">Gaussian Blur<a class="anchor-link" href="#Gaussian-Blur">&#182;</a></h3><p><img src='../Graphics/Guassian.png' width=600><p></p>
+<p><strong>Low-pass filter</strong></p>
+<p>Simply apply a Gaussian blur to the image. The result is a smoothed image where fine details are suppressed.</p>
+<p><strong>High-pass filter</strong></p>
+<p>First, apply a Gaussian blur to the image to get a low-pass version.
+Then, subtract this low-pass version from the original image. The result will be an image that retains only the fine details.</p>
+<p><img src='../Graphics/High_Pass_Low_Pass.png' width=800><p></p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Estimated Gaussian Kernel</span>
+
+<span class="n">gaussian_est_kernel</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">16</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="c1"># For a 3x3 kernel, there&#39;s a limitation on how much &quot;spread&quot; we can represent due to its small size.</span>
+<span class="c1"># A value of sigma=0.85 is a heuristic that provides a reasonable blur effect for such a small kernel.</span>
+<span class="c1"># However, the choice isn&#39;t absolute, and other values can be used based on specific requirements.</span>
+<span class="k">def</span> <span class="nf">gaussian_kernel</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.85</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">sigma</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">sigma</span> <span class="o">=</span> <span class="n">kernel_size</span> <span class="o">/</span> <span class="mf">6.0</span>  <span class="c1"># Some heuristic</span>
+    
+    <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfunction</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)),</span>
+        <span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">kernel</span> <span class="o">/</span> <span class="n">kernel</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">gaussian_kernel</span><span class="p">()</span>
+<span class="c1">#Actual gaussian kernel function</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gaussian kernel:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">kernel</span><span class="p">)</span>
+<span class="c1">#Estimated gaussian kernel function</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimated Gaussian kernel:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">gaussian_est_kernel</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Gaussian kernel:
+ [[0.06256912 0.12499996 0.06256912]
+ [0.12499996 0.24972366 0.12499996]
+ [0.06256912 0.12499996 0.06256912]]
+Estimated Gaussian kernel:
+ [[0.0625 0.125  0.0625]
+ [0.125  0.25   0.125 ]
+ [0.0625 0.125  0.0625]]
+</pre>
+</div>
 </div>
 
 </div>

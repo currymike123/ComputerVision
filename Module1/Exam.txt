@@ -1,0 +1,1 @@
+Load the image "Input.png". Using OpenCV, NumPy, and Matplotlib, construct a processing pipeline to generate a masked image resembling "Output.png". You're free to reference any class materials or notes for assistance.
