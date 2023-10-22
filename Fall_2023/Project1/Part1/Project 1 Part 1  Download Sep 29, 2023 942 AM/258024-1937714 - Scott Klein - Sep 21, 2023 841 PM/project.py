@@ -78,10 +78,10 @@ def hsv_to_rgb(hsv):
     s = (hsv[0][0][1])
     v = (hsv[0][0][2])
 
-    print("/n" + str(h))
-    print("/n" + str(s))
-    print("/n" + str(v))
-    print("/n")
+    # print("/n" + str(h))
+    # print("/n" + str(s))
+    # print("/n" + str(v))
+    # print("/n")
 
     c = v * s 
 
@@ -128,4 +128,20 @@ def hsv_to_rgb(hsv):
     b = (b + m) * 255
 
     return np.uint8([[[r,g,b]]])
+
+# Create a rgb value
+rgb = np.uint8([[[200, 74, 55]]])
+
+# Call the rgb_to_hsv function
+hsv = rgb_to_hsv(rgb)
+
+print(hsv)
+
+# Create a hsv value
+hsv = np.uint8([[[4, 185, 200]]])
+
+# Call the hsv_to_rgb function
+rgb = hsv_to_rgb(hsv)
+
+print(rgb)
 

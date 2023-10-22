@@ -14259,7 +14259,7 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Resizing-&amp;-Image-Interpolation">Resizing &amp; Image Interpolation<a class="anchor-link" href="#Resizing-&amp;-Image-Interpolation">&#182;</a></h1><hr>
+<h1 id="Module-2b:-Resizing-&amp;-Image-Interpolation">Module 2b: Resizing &amp; Image Interpolation<a class="anchor-link" href="#Module-2b:-Resizing-&amp;-Image-Interpolation">&#182;</a></h1><hr>
 
 </div>
 </div>
@@ -14380,7 +14380,8 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>Interpolation</strong> is a method of constructing (finding) new data points based on the range of a discrete set of known data points. In image processing we are filling in the gaps in our pixel data when resize the image.  Either adding pixels when the image is upsized or removing them when it is downsized.  Information is always lost when a resizing occurs, interpolation tries to make the best guess to fill in the gaps from the lost data.</p>
-<p><img src="../Graphics/interpolation.png"><p></p>
+<p><img src="../Graphics/interpolation.png"><p>
+<img src="../Graphics/interpolation.png" alt="Alt Text"></p>
 <h4 id="How-do-we-fill-in-the-missing-values?--Let's-start-with-finding-points-along-a-line-and-build-from-there.">How do we fill in the missing values?  Let's start with finding points along a line and build from there.<a class="anchor-link" href="#How-do-we-fill-in-the-missing-values?--Let's-start-with-finding-points-along-a-line-and-build-from-there.">&#182;</a></h4>
 </div>
 </div>
@@ -14416,27 +14417,6 @@ y = y<sub>1</sub> + (((x - x<sub>1</sub>) * (y<sub>2</sub> - y<sub>1</sub>)) / (
 <h3 id="Nearest-Neighbor">Nearest Neighbor<a class="anchor-link" href="#Nearest-Neighbor">&#182;</a></h3><p>The nearest neighbor algorithm selects the value of the nearest point and does not consider the values of neighboring points at all.  A very simple algorithm with a fast execution time widely used in real-time rendering.  Nearest Neighbor produces sharp edges and is ideal for images with hard lines.<p>
 <img src="../Graphics/nn_1.png"></p>
 <p><p><p></p>
-<h4 id="Nearest-Neighbor-Pseudoscope">Nearest Neighbor Pseudoscope<a class="anchor-link" href="#Nearest-Neighbor-Pseudoscope">&#182;</a></h4><p><img src="../Graphics/grid-nn.png"><p></p>
-
-<pre><code>If (K-B &lt; B+1-K)
-
-    Pixel is one of the top two.
-
-Else
-
-    Pixel is one of the bottom two.
-
-ENDIF
-
-IF (J-A &lt; A+1-J)
-
-    Pixel is one of the left two.
-
-Else 
-
-    Pixel is one of the right two.
-
-ENDIF</code></pre>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
