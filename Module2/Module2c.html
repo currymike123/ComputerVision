@@ -14259,14 +14259,15 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Module2c:-The-Kernel">Module2c: The Kernel<a class="anchor-link" href="#Module2c:-The-Kernel">&#182;</a></h1><p>How are your neighbors effecting you?</p>
+<h1 id="Module2c:-The-Kernel">Module2c: The Kernel<a class="anchor-link" href="#Module2c:-The-Kernel">&#182;</a></h1><p>"Filters are devices for picking and choosing - for retaining things that you want while getting rid of things that you don't: coffee filters separate the coffee from the grounds, gravel filters let the small stones through and retain the large ones, audio filters take out the crackle and hiss, Ray-Bans filter out sunlight, and rose-tinted spectacles let you see the world in whatever way you like." - William J. Mitchell (The Reconfigured Eye)</p>
 <hr>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The Threshold filter from Module 2 modified the image by changing pixel value depending on if it was above or below a fixed value.  Each discrete pixel was modified in insolation.  Another way to modify an image is to change the pixel value in relation its neighboring pixels.  To accomplish this we use a matrix of numbers called a <strong>Convolution Kernel</strong>.</p>
+<p>The Threshold filter from Module 2 modifies the image by changing pixel values depending on if it is above or below a dividing point.  Each discrete pixel was modified in insolation.</p>
+<p>Another way to modify an image is to change the pixel value in relation its neighboring pixels.  To accomplish this we use a matrix of numbers called a <strong>Convolution Kernel</strong>.</p>
 <p><strong>Sharpen</strong> and <strong>Blur</strong> are two common kernels.</p>
 <p><b>Sharpen</b> emphasizes differences in adjacent pixels.<br>
 <b>Blur</b> de-emphasizes differences in adjacent pixels.</p>
@@ -14314,7 +14315,7 @@ $$<p>(255 <em> 1/9) + (226 </em> 1/9) + (153 <em> 1/9) + <br>
 <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(([</span><span class="mi">255</span><span class="p">,</span><span class="mi">226</span><span class="p">,</span><span class="mi">153</span><span class="p">],</span>
                   <span class="p">[</span><span class="mi">226</span><span class="p">,</span><span class="mi">153</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
                   <span class="p">[</span><span class="mi">153</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]),</span>
-                  <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+                  <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 
 <span class="c1"># Convolution Step.</span>
 <span class="n">convolve_image</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)))</span>
@@ -14351,9 +14352,14 @@ $$<p>(255 <em> 1/9) + (226 </em> 1/9) + (153 <em> 1/9) + <br>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><img src='Graphics/full_padding_no_strides.webp'><p>
+<p><img src='../Graphics/full_padding_no_strides.webp'><p>
 <b>Stride</b> denotes how many pixels we are moving in each step of convolution.</p>
-<p><b>Padding</b> is the process of adding pixels to the frame of the image to allow for a minimized reduction of size in the output image. Roughly, it is a way of increasing the size of an image, to counteract the fact that stride reduces the size.</p>
+<p><b>Padding</b> is the process of adding pixels to the frame of the image to allow for a minimized reduction of size in the output image. Roughly, it is a way of increasing the size of an image, to counteract the fact that stride reduces the size.<p></p>
+<ul>
+<li>Zero/Same Padding: Adds zeros around the border of the image.</li>
+<li>Replicate Padding: The border pixels of the image are replicated.
+For instance, if the leftmost pixel values are [10, 20, 30], the padding will be [10, 10, 10, 20, 30, 30, 30].</li>
+</ul>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14425,7 +14431,7 @@ $$<p>(255 <em> 1/9) + (226 </em> 1/9) + (153 <em> 1/9) + <br>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Python implementation of convolution</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Implementation of convolution</span>
 
 <span class="c1"># Code for 3x3 kernel with convolution. No Padding. Stride = 1.</span>
 <span class="c1"># To perform convolution on the whole image padding needs to be added.</span>

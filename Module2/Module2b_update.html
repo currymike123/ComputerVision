@@ -14266,7 +14266,7 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>Interpolation</strong> is a method of constructing (finding) new data points based on the range of a discrete set of known data points. In image processing we are filling in the gaps in our pixel data when resize the image.  Either adding pixels when the image is upsized or removing them when it is downsized.  Information is always lost when a resizing occurs, interpolation tries to make the best guess to fill in the gaps from the lost data.</p>
-<p><img src="Graphics/interpolation.png"><p></p>
+<p><img src="../Graphics/interpolation.png"><p></p>
 <h4 id="How-do-we-fill-in-the-missing-values?--Let's-start-with-finding-points-along-a-line-and-build-from-there.">How do we fill in the missing values?  Let's start with finding points along a line and build from there.<a class="anchor-link" href="#How-do-we-fill-in-the-missing-values?--Let's-start-with-finding-points-along-a-line-and-build-from-there.">&#182;</a></h4>
 </div>
 </div>
@@ -14274,7 +14274,7 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Linear-Interpolation">Linear Interpolation<a class="anchor-link" href="#Linear-Interpolation">&#182;</a></h3><p>We have already used interpolation with the HSV color space to set the values to the correct range. Remember: <code>np.interp()</code><p></p>
 <p>Simply, <b>Linear Interpolation</b> is a weighting of the known data points by their distance to the unknown data points.</p>
-<p><img src="Graphics/lerp.png"></p>
+<p><img src="../Graphics/lerp.png"></p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14338,25 +14338,49 @@ y = y<sub>1</sub> + (((x - x<sub>1</sub>) * (y<sub>2</sub> - y<sub>1</sub>)) / (
 <p>So new data point (x, y) is (5,8)</p>
 <p>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># # Linear Interpolation</span>
-<span class="c1"># def Linear_Interpolation(x, x0, x1, y0, y1):</span>
-<span class="c1">#     # x0, x1, y0, y1 are the known points</span>
-<span class="c1">#     return round(y0 + (x - x0) * (y1 - y0) / (x1 - x0))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1"># print(Linear_Interpolation(5,1,6,4,9))</span>
+<span class="c1"># Linear Interpolation</span>
+<span class="k">def</span> <span class="nf">Linear_Interpolation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">):</span>
+    <span class="c1"># x0, x1, y0, y1 are the known points</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">y0</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">))</span>
 
-<span class="c1"># print(round(np.interp(5,[1,6],[4,9])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Linear_Interpolation</span><span class="p">(</span><span class="o">.</span><span class="mi">72</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="o">.</span><span class="mi">72</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">])))</span>
 </pre></div>
 
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>184
+184
+</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -14369,9 +14393,9 @@ y = y<sub>1</sub> + (((x - x<sub>1</sub>) * (y<sub>2</sub> - y<sub>1</sub>)) / (
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Nearest-Neighbor">Nearest Neighbor<a class="anchor-link" href="#Nearest-Neighbor">&#182;</a></h3><p>The nearest neighbor algorithm selects the value of the nearest point and does not consider the values of neighboring points at all.  Simply, project the resized image back onto the original.</p>
 <p>A very simple algorithm with a fast execution time widely used in real-time rendering.  Nearest Neighbor produces sharp edges and is ideal for images with hard lines.<p>
-<img src="Graphics/nn_1.png"></p>
+<img src="../Graphics/nn_1.png"></p>
 <p><p><p></p>
-<p><img src="Graphics/grid-nn.png"><p></p>
+<p><img src="../Graphics/grid-nn.png"><p></p>
 
 <pre><code>If (K-B &lt; B+1-K)
 
@@ -14649,21 +14673,21 @@ ENDIF</code></pre>
 <p>Instead of a set of two known data points we now have a set of four known data points. <p></p>
 <p>Given, 4 pixels (0,0), (1,0), (0,1), and (1,1).<br></p>
 <p>What is the value at (0.3,0.4)</p>
-<p><img src="Graphics/BiLinear_1.png"> <p>
-<img src="Graphics/BiLinear_new.png"> <p></p>
+<p><img src="../Graphics/BiLinear_1.png"> <p>
+<img src="../Graphics/BiLinear_new.png"> <p></p>
 <ol>
 <li>First, find the value along rows i.e at position A:(0,0.4) and B:(1,0.4) by linear interpolation.</li.
 <li>After getting the values at A and B, apply linear interpolation for point (0.3,0.4) between A and B and this is the final result.</li>
-</ol><p><img src="Graphics/BiLinear_2.png"><p></p>
+</ol><p><img src="../Graphics/BiLinear_2.png"><p></p>
 <p>Let's use this process for a 2x2 image scaled to a 4x4 image.</p>
-<p><img src="Graphics/BiLinear_3.png"><p></p>
+<p><img src="../Graphics/BiLinear_3.png"><p></p>
 <ol start="3">
 <li>Let’s take ‘P1’. First, we find the position of P1 in the input image. By projecting the 4×4 image on the input 2×2 image we get the coordinates of P1 as (0.25,0.25).</li>
 <li>Since P1 is the border pixel and has no values to its left, so OpenCV replicates the border pixel. This means the row or column at the very edge of the original is replicated to the extra border(padding).</li>
 <li>So, now our input image (after border replication) looks like this. Note the values in red shows the input image.</li>
-</ol><p><img src="Graphics/BiLinear_4.png"><p></p>
+</ol><p><img src="../Graphics/BiLinear_4.png"><p></p>
 <p>To find the value of P1, let’s first visualize where P1 is in the input image (previous step image). Below figure shows the upper left 2×2 input image region and the location of P1 in that.</p>
-<p><img src="Graphics/BiLinear_5.png"></p>
+<p><img src="../Graphics/BiLinear_5.png"></p>
 <p>No we need to weights to calculate the value of P1.  OpenCv uses the following formula to find the weights.</p>
 
 <pre><code>fx = (float)((dx+0.5)*scale_x - 0.5)
@@ -14941,23 +14965,23 @@ fx -= sx</code></pre>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="BiCubic">BiCubic<a class="anchor-link" href="#BiCubic">&#182;</a></h3><p>BiLinear Interpolation uses the 4 (2x2 frame) nearest neighbors to find the new pixel value.  Bicubic interpolation uses the 16 nearest neighbors (4x4 frame).</p>
-<p><img src="Graphics/Bicubic_new.png"><p></p>
+<p><img src="../Graphics/Bicubic_new.png"><p></p>
 <p>x used in the above code is calculated from below code where x = fx</p>
 
 <pre><code>fx = (float)((dx+0.5)*scale_x - 0.5);
 sx = cvFloor(fx);
 fx -= sx;</code></pre>
 <p>Let's use the previous example:<p>
-<img src="Graphics/BiLinear_3.png"><p></p>
+<img src="../Graphics/BiLinear_3.png"><p></p>
 <ol>
 <li>We previously calculated P1. This time let’s take ‘P2’. First, we find the position of P2 in the input image as we did before. So, we find P2 coordinate as (0.75,0.25) with dx = 1 and dy=0.</li>
 <li>Because cubic needs 4 pixels (2 on left and 2 on right) so, we pad the input image.
 OpenCV has different methods to add borders which you can check here. Here, I used cv2.BORDER_REPLICATE method.</li>
 </ol><p>After padding the input image looks like this:</p>
-<p><img src="Graphics/BiCubic_1.png"><p></p>
+<p><img src="../Graphics/BiCubic_1.png"><p></p>
 <ol start="3">
 <li>To find the value of P2, let’s first visualize where P2 is in the image. Yellow is the input image before padding. We take the blue 4×4 neighborhood as shown below</li>
-</ol><p><img src="Graphics/BiCubic_2.png"><p></p>
+</ol><p><img src="../Graphics/BiCubic_2.png"><p></p>
 <ol start="4">
 <li>For P2, using dx and dy we calculate fx and fy from code above. We get, fx=0.25 and fy=0.75</li>
 <li>Now, we substitute fx and fy in the above code to calculate the four coefficients. Thus we get coefficients = [-0.0351, 0.2617,0.8789, -0.1055] for fy =0.75 and for fx=0.25 we get coefficients = [ -0.1055 , 0.8789, 0.2617, -0.0351]</li>
@@ -14973,7 +14997,7 @@ OpenCV has different methods to add borders which you can check here. Here, I us
 -0.0351*12.265 + 0.2617*12.265 + 0.8789*12.265 -0.1055*32.625 = 10.11702</li>
 <li>Similarly, repeat for other pixels.</li>
 </ol><p>The final result:<br>
-<img src="Graphics/BiCubic_3.png"><p></p>
+<img src="../Graphics/BiCubic_3.png"><p></p>
 <p>This produces noticeably sharper images than the previous two methods and balances processing time and output quality. That’s why it is used widely</p>
 
 </div>
