@@ -1,12 +1,18 @@
-
-
 import cv2
 import numpy as np
 import sys
 print(sys.executable)
 
+# Print the Python version
+print("Python version")
+print(sys.version)
+
+# Print just the version number
+print("Version info.")
+print(sys.version_info)
+
 # Video capture from file
-cap = cv2.VideoCapture("race_car_preview.mp4")
+cap = cv2.VideoCapture("apple.mp4")
 
 # Check if the video file opened successfully
 if not cap.isOpened():
@@ -37,8 +43,9 @@ while True:
         x, y, w, h = cv2.boundingRect(contour)
         
         # Check if the size of the contour is large enough, considering noise and other smaller objects
-        if cv2.contourArea(contour) > 100:  # this value (100) is arbitrary and depends on the object size in the video
+        if cv2.contourArea(contour) > 25:  # this value (20) is arbitrary and depends on the object size in the video
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    
 
     # Display the original frame with the drawn contours
     cv2.imshow('Frame with tracked object', frame)

@@ -121,7 +121,7 @@ def Object(frame):
 # If the input is taken from a camera or the webcam, pass 0.
 # If it's a file path and file name.
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("black_sphere.mp4")
 
 # Variable to keep track of our current image filter. Default to Preview.
 image_filter = PREVIEW
