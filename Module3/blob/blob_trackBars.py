@@ -35,9 +35,11 @@ cv2.createTrackbar("Max Inertia Ratio", "Trackbars", 100, 100, nothing)
 while True:
     ret, frame = cap.read()
 
+    # Check if the video was opened successfully
     if not ret:
-        print("Can't receive frame (stream end?). Exiting ...")
-        break
+        print("Reached the end of the video, looping...")
+        cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        continue
 
     frame = cv2.resize(frame, None, fx = 0.4, fy = 0.4, interpolation=cv2.INTER_NEAREST)
     

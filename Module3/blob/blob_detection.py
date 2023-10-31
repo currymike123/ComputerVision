@@ -40,7 +40,7 @@ while True:
     params.minCircularity = 0.1
 
     # Filter by Convexity
-    params.filterByConvexity = False
+    params.filterByConvexity = Falseq
     params.minConvexity = 0.87
 
     # Filter by Inertia
