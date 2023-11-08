@@ -21,7 +21,10 @@ while True:
     ret, frame = cap.read()
 
     if not ret:
+        print("Unable to capture video")
         break
+
+    cv2.imshow("Live Feed", frame)
 
     if count < num_frames_for_background:
 
@@ -36,10 +39,10 @@ while True:
 
     elif count == num_frames_for_background:
         background = (background_frame / num_frames_for_background).astype(np.uint8)
-    
+        count += 1
     else:
         diff = compute_difference(background, frame)
-        gray_dif = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
+        gray_diff = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
         _, threshold_val = cv2.threshold(gray_diff, 100, 255, cv2.THRESH_BINARY)
         cv2.imshow("Motion", threshold_val)
 

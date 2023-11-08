@@ -5,7 +5,8 @@ import numpy as np
 cap = cv2.VideoCapture(0)
 
 # Initialize Shi-Tomasi parameters
-feature_params = dict(qualityLevel=0.3,
+feature_params = dict(maxCorners=100,
+                      qualityLevel=0.3,
                       minDistance=7,
                       blockSize=7)
 
