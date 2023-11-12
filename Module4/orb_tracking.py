@@ -8,16 +8,6 @@ def nothing(x):
 # Initialize video capture
 cap = cv2.VideoCapture(0)
 
-# Enable auto white balance
-cap.set(cv2.CAP_PROP_AUTO_WB, 1)
-
-# Check if auto white balance is enabled
-if cap.get(cv2.CAP_PROP_AUTO_WB) == 1:
-    print("Auto White Balance enabled.")
-else:
-    print("Unable to enable Auto White Balance.")
-
-# Your video capture and processing code here
 
 # Create windows for the trackbars and display
 cv2.namedWindow('Settings')
@@ -90,8 +80,8 @@ while True:
     # Display the foreground mask
     cv2.imshow('Foreground mask', fgmask)
 
-    # Break the loop when 'q' is pressed
-    if cv2.waitKey(30) & 0xFF == ord('q'):
+    key = cv2.waitKey(1)
+    if key == ord('q') or key == ('Q'):
         break
 
 # Release resources and destroy all windows

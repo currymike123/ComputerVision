@@ -49,7 +49,7 @@ while True:
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
     # Display the original frame with the bounding box
-    cv2.imshow('Frame', frame)
+    # cv2.imshow('Frame', frame)
 
     # Display the foreground mask
     cv2.imshow('Foreground mask', fgmask)
